@@ -7,15 +7,29 @@
       </router-link>
     </div>
     <div>
-      <router-link :to="{ name: 'login' }" class="ma-5">Login</router-link>
-      <router-link :to="{ name: 'signup' }" class="ma-5">SignUp</router-link>
+      <router-link :to="{ name: 'login' }" class="ma-5" v-if="!loggedIn">Login</router-link>
+      <router-link :to="{ name: 'signup' }" class="ma-5" v-if="!loggedIn">SignUp</router-link>
+      <router-link :to="{ name: 'classes' }" class="ma-5" v-if="loggedIn">Classes</router-link>
+      <button v-if="loggedIn" @click="logout">Logout</button>
     </div>
   </nav>
 </template>
 
 <script>
+import { mapGetters } from "vuex";
+
 export default {
-  name: "Home"
+  name: "NavBar",
+  computed: {
+    ...mapGetters({
+      loggedIn: "auth/loggedIn"
+    })
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("auth/logout");
+    }
+  }
 };
 </script>
 
