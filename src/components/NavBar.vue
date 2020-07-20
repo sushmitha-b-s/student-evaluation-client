@@ -20,13 +20,22 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.router-link-exact-active {
+  border-bottom: 2px solid black;
+  padding-bottom: 2px;
+}
+
 nav {
   position: sticky;
   top: 0;
   display: flex;
   justify-content: space-around;
+  backdrop-filter: blur(6px);
   .logo {
     font-size: 18px;
+    a {
+      border: none;
+    }
   }
   a {
     color: #000;
