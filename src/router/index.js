@@ -18,6 +18,12 @@ const routes = [
     path: '/signup',
     name: 'signup',
     component: () => import(/* webpackChunkName: "about" */ '../views/SignUpView.vue')
+  },
+  {
+    path: '/classes',
+    name: 'classes',
+    component: () => import(/* webpackChunkName: "about" */ '../views/ClassList.vue'),
+    meta: { requiresAuth: true }
   }
 ]
 
@@ -25,6 +31,15 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  const loggedIn = localStorage.getItem('user')
+
+  if (to.matched.some(record => record.meta.requiresAuth) && !loggedIn) {
+    next('/login')
+  }
+  next()
 })
 
 export default router

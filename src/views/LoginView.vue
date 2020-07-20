@@ -57,7 +57,7 @@ export default {
       this.$store
         .dispatch("auth/login", loginDetails)
         .then(() => {
-          this.$router.push({ name: "home" });
+          this.$router.push({ name: "classes" });
         })
         .catch(() => {});
     }
