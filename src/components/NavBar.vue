@@ -7,10 +7,15 @@
       </router-link>
     </div>
     <div>
-      <router-link :to="{ name: 'login' }" class="ma-5" v-if="!loggedIn">Login</router-link>
-      <router-link :to="{ name: 'signup' }" class="ma-5" v-if="!loggedIn">SignUp</router-link>
-      <router-link :to="{ name: 'classes' }" class="ma-5" v-if="loggedIn">Classes</router-link>
-      <button v-if="loggedIn" @click="logout">Logout</button>
+      <span v-if="!loggedIn">
+        <router-link :to="{ name: 'login' }" class="ma-5">Login</router-link>
+        <router-link :to="{ name: 'signup' }" class="ma-5">SignUp</router-link>
+      </span>
+
+      <span v-else>
+        <router-link :to="{ name: 'classes' }" class="ma-5">Classes</router-link>
+        <button @click="logout">Logout</button>
+      </span>
     </div>
   </nav>
 </template>
