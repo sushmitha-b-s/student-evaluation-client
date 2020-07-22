@@ -25,7 +25,7 @@
           </v-card-title>
 
           <v-card-text>
-            <span>the place where our form will be.</span>
+            <AddClassForm :batch="newBatch" @clicked:add-class="addNewClass" />
           </v-card-text>
         </v-card>
       </v-dialog>
@@ -37,28 +37,33 @@
 
 <script>
 import ClassItem from "@/components/ClassItem";
+import AddClassForm from "@/components/AddClassForm";
 import { mapGetters } from "vuex";
 
 export default {
   name: "ClassList",
   components: {
-    ClassItem
+    ClassItem,
+    AddClassForm
   },
 
   data() {
     return {
       dialog: false,
-      loading: false
+      loading: false,
+      newBatch: {
+        batchNo: null,
+        startDate: null,
+        endDate: null
+      }
     };
   },
 
   created() {
     this.loading = true;
-    setTimeout(() => {
-      this.$store.dispatch("classes/fetch").then(() => {
-        this.loading = false;
-      });
-    }, 3000);
+    this.$store.dispatch("classes/fetch").then(() => {
+      this.loading = false;
+    });
   },
 
   computed: {
@@ -67,6 +72,14 @@ export default {
     }),
     hasClasses() {
       return !!(this.classes && this.classes.length);
+    }
+  },
+
+  methods: {
+    addNewClass(newBatch) {
+      this.$store
+        .dispatch("classes/add", newBatch)
+        .then(() => (this.dialog = false));
     }
   }
 };

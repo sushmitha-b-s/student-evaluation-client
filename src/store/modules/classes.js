@@ -12,6 +12,9 @@ export const mutations = {
     },
     DELETE_CLASS(state, id) {
         state.classes = state.classes.filter(batch => batch.id !== id)
+    },
+    ADD_CLASS(state, newBatch) {
+        state.classes.push(newBatch)
     }
 }
 
@@ -30,6 +33,13 @@ export const actions = {
             .then(({ data }) => {
                 commit('DELETE_CLASS', data.id)
             })
+    },
+
+    add({ commit }, newBatch) {
+        return service.addClass(newBatch).then(({ data }) => {
+            debugger
+            commit('ADD_CLASS', data)
+        })
     }
 }
 

@@ -7,7 +7,7 @@
       <v-card-text class="text-center ma-5">
         <p>
           <span>START DATE:</span>
-          <v-chip color="primary">
+          <v-chip color="grey lighten-1">
             <v-avatar left>
               <v-icon>mdi-calendar-range</v-icon>
             </v-avatar>
@@ -17,7 +17,7 @@
 
         <p>
           <span>END DATE:</span>
-          <v-chip color="primary">
+          <v-chip color="grey lighten-1">
             <v-avatar left>
               <v-icon>mdi-calendar-range</v-icon>
             </v-avatar>

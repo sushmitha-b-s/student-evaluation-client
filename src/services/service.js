@@ -21,5 +21,8 @@ export const service = {
     },
     deleteClass(id) {
         return apiClient.delete(`/classes/${id}`)
+    },
+    addClass(newBatch) {
+        return apiClient.post('/classes', newBatch)
     }
 }
