@@ -6,7 +6,7 @@
       </v-card-title>
       <v-card-text class="text-center ma-5">
         <p>
-          <span>START DATE: {{ `${' '}` }}</span>
+          <span>START DATE:</span>
           <v-chip color="primary">
             <v-avatar left>
               <v-icon>mdi-calendar-range</v-icon>
@@ -16,7 +16,7 @@
         </p>
 
         <p>
-          <span>END DATE: {{ `${' '}` }}</span>
+          <span>END DATE:</span>
           <v-chip color="primary">
             <v-avatar left>
               <v-icon>mdi-calendar-range</v-icon>
@@ -27,7 +27,7 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn color="primary" outlined>
+        <v-btn color="primary" outlined @click="deleteClass">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
       </v-card-actions>
@@ -43,6 +43,21 @@ export default {
       type: Object,
       required: true,
       default: () => ({})
+    }
+  },
+
+  data() {
+    return {
+      loading: false
+    };
+  },
+
+  methods: {
+    deleteClass() {
+      this.loading = true;
+      this.$store.dispatch("classes/delete", this.batch).then(() => {
+        this.loading = false;
+      });
     }
   }
 };

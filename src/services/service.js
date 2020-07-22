@@ -18,5 +18,8 @@ export const service = {
     },
     fetchClasses() {
         return apiClient.get('/classes')
+    },
+    deleteClass(id) {
+        return apiClient.delete(`/classes/${id}`)
     }
 }
