@@ -25,5 +25,5 @@ export const actions = {
 }
 
 export const getters = {
-
+    all: state => state.classes
 }
