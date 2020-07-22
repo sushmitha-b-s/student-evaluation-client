@@ -6,6 +6,9 @@
 
 <script>
 export default {
-  name: "ClassList"
+  name: "ClassList",
+  created() {
+    this.$store.dispatch("classes/fetch");
+  }
 };
 </script>
