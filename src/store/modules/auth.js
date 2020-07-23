@@ -1,5 +1,4 @@
-import service from '@/services/service'
-import axios from 'axios'
+import { service, apiClient } from '@/services/service'
 
 export const namespaced = true
 
@@ -11,7 +10,7 @@ export const mutations = {
     SET_USER_DATA(state, userData) {
         state.user = userData
         localStorage.setItem('user', JSON.stringify(userData))
-        axios.defaults.headers.common['auth-token'] = userData.token
+        apiClient.defaults.headers.common['auth-token'] = userData.token
     },
     CLEAR_USER_DATA() {
         localStorage.removeItem('user')

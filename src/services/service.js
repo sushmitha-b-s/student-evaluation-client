@@ -1,6 +1,6 @@
 import axios from 'axios'
 
-const apiClient = axios.create({
+export const apiClient = axios.create({
     baseURL: 'http://localhost:4000',
     withCredentials: false,
     headers: {
@@ -9,11 +9,20 @@ const apiClient = axios.create({
     }
 })
 
-export default {
+export const service = {
     register(data) {
         return apiClient.post('/register', data)
     },
     login(data) {
         return apiClient.post('/login', data)
+    },
+    fetchClasses() {
+        return apiClient.get('/classes')
+    },
+    deleteClass(id) {
+        return apiClient.delete(`/classes/${id}`)
+    },
+    addClass(newBatch) {
+        return apiClient.post('/classes', newBatch)
     }
 }
