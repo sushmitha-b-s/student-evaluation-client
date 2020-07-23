@@ -39,7 +39,12 @@
     <v-container>
       <v-row>
         <v-col v-for="batch in classes" :key="batch.id" xs="12" sm="6" md="4">
-          <ClassItem :batch="batch" />
+          <router-link
+            :to="{ name: 'students', params: { classId: batch.id } }"
+            class="removeUnderline"
+          >
+            <ClassItem :batch="batch" />
+          </router-link>
         </v-col>
       </v-row>
     </v-container>
@@ -103,5 +108,9 @@ span {
     display: block;
     margin: 100px auto 30px auto;
   }
+}
+
+.removeUnderline {
+  text-decoration: none;
 }
 </style>
