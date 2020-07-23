@@ -10,7 +10,9 @@
       <p>Please wait while loading...</p>
     </span>
 
-    <div class="text-center ma-5 mt-10" v-if="!loading">
+    <h2 class="text-sm-h2 text-xs-h3 text-center mt-5" v-if="!loading">Class List</h2>
+
+    <div class="text-center mt-10" v-if="!loading">
       <v-dialog v-model="dialog" width="500">
         <template v-slot:activator="{ on, attrs }">
           <v-btn color="primary" dark v-bind="attrs" v-on="on">
@@ -34,7 +36,13 @@
       </v-dialog>
     </div>
 
-    <ClassItem v-for="batch in classes" :key="batch.id" :batch="batch" />
+    <v-container>
+      <v-row>
+        <v-col v-for="batch in classes" :key="batch.id" xs="12" sm="6" md="4">
+          <ClassItem :batch="batch" />
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 

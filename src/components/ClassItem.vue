@@ -1,33 +1,29 @@
 <template>
   <div>
-    <v-card shaped max-width="300" class="ma-5">
+    <v-card shaped class="ma-5">
       <v-card-title>
         <h3>Batch #{{ batch.batchNo }}</h3>
       </v-card-title>
-      <v-card-text class="text-center ma-5">
+
+      <v-card-text>
         <p>
-          <span>START DATE:</span>
-          <v-chip color="grey lighten-1">
-            <v-avatar left>
-              <v-icon>mdi-calendar-range</v-icon>
-            </v-avatar>
-            {{ batch.startDate }}
-          </v-chip>
+          <span class="text-uppercase font-weight-medium">start date:</span>
+          <span>
+            <v-chip small class="ml-3">{{ batch.startDate }}</v-chip>
+          </span>
         </p>
 
         <p>
-          <span>END DATE:</span>
-          <v-chip color="grey lighten-1">
-            <v-avatar left>
-              <v-icon>mdi-calendar-range</v-icon>
-            </v-avatar>
-            {{ batch.endDate }}
-          </v-chip>
+          <span class="text-uppercase font-weight-medium">end date:</span>
+          <span>
+            <v-chip small class="ml-6">{{ batch.endDate }}</v-chip>
+          </span>
         </p>
       </v-card-text>
 
       <v-card-actions>
-        <v-btn color="primary" outlined @click="deleteClass">
+        <v-spacer></v-spacer>
+        <v-btn color="primary" outlined @click="deleteClass" class="mr-4">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
       </v-card-actions>
