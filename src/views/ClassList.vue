@@ -5,7 +5,10 @@
       class="ma-10 text-center"
     >There are no classes registered right now.</p>
 
-    <img src="@/assets/loading.svg" alt="Loading...." v-if="loading" />
+    <span v-if="loading">
+      <img src="@/assets/loading.svg" alt="Loading...." />
+      <p>Please wait while loading...</p>
+    </span>
 
     <div class="text-center ma-5 mt-10" v-if="!loading">
       <v-dialog v-model="dialog" width="500">
@@ -86,8 +89,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-img {
-  display: block;
-  margin: 100px auto 30px auto;
+span {
+  text-align: center;
+  img {
+    display: block;
+    margin: 100px auto 30px auto;
+  }
 }
 </style>
