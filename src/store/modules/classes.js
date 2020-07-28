@@ -37,7 +37,6 @@ export const actions = {
 
     add({ commit }, newBatch) {
         return service.addClass(newBatch).then(({ data }) => {
-            debugger
             commit('ADD_CLASS', data)
         })
     }

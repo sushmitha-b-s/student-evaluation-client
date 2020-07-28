@@ -18,7 +18,7 @@
       >
         <template v-slot:activator="{ on, attrs }">
           <v-text-field
-            v-model="batch.startDate"
+            v-model="formattedStartDate"
             label="Select start date"
             prepend-icon="mdi-calendar-range"
             readonly
@@ -39,7 +39,7 @@
       >
         <template v-slot:activator="{ on, attrs }">
           <v-text-field
-            v-model="batch.endDate"
+            v-model="formattedEndDate"
             label="Select end date"
             prepend-icon="mdi-calendar-range"
             readonly
@@ -58,6 +58,8 @@
 </template>
 
 <script>
+import { format } from "date-fns";
+
 export default {
   name: "AddClassForm",
 
@@ -79,6 +81,18 @@ export default {
   methods: {
     submit() {
       this.$emit("clicked:add-class", this.batch);
+    },
+    formatDate(date) {
+      return format(new Date(date), "dd MMM yyyy");
+    }
+  },
+
+  computed: {
+    formattedStartDate() {
+      return this.batch.startDate ? this.formatDate(this.batch.startDate) : "";
+    },
+    formattedEndDate() {
+      return this.batch.endDate ? this.formatDate(this.batch.endDate) : "";
     }
   }
 };

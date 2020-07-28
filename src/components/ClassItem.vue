@@ -9,14 +9,14 @@
         <p>
           <span class="text-uppercase font-weight-medium">start date:</span>
           <span>
-            <v-chip small class="ml-3">{{ batch.startDate }}</v-chip>
+            <v-chip label class="ml-3">{{ format(new Date(batch.startDate), 'dd MMM yyyy') }}</v-chip>
           </span>
         </p>
 
         <p>
           <span class="text-uppercase font-weight-medium">end date:</span>
           <span>
-            <v-chip small class="ml-6">{{ batch.endDate }}</v-chip>
+            <v-chip label class="ml-6">{{ format(new Date(batch.endDate), 'dd MMM yyyy') }}</v-chip>
           </span>
         </p>
       </v-card-text>
@@ -32,6 +32,8 @@
 </template>
 
 <script>
+import { format } from "date-fns";
+
 export default {
   name: "ClassItem",
   props: {
@@ -44,7 +46,8 @@ export default {
 
   data() {
     return {
-      loading: false
+      loading: false,
+      format
     };
   },
 

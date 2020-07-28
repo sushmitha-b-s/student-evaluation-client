@@ -93,9 +93,12 @@ export default {
 
   methods: {
     addNewClass(newBatch) {
-      this.$store
-        .dispatch("classes/add", newBatch)
-        .then(() => (this.dialog = false));
+      this.$store.dispatch("classes/add", newBatch).then(() => {
+        this.dialog = false;
+        this.newBatch.batchNo = null;
+        this.newBatch.startDate = null;
+        this.newBatch.endDate = null;
+      });
     }
   }
 };
