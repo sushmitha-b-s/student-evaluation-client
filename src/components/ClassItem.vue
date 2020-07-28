@@ -23,7 +23,7 @@
 
       <v-card-actions>
         <v-spacer></v-spacer>
-        <v-btn color="primary" outlined @click="deleteClass" class="mr-4">
+        <v-btn color="primary" outlined @click.prevent="deleteClass" class="mr-4">
           <v-icon>mdi-delete</v-icon>
         </v-btn>
       </v-card-actions>
