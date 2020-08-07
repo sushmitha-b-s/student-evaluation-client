@@ -24,5 +24,21 @@ export const service = {
     },
     addClass(newBatch) {
         return apiClient.post('/classes', newBatch)
+    },
+
+    fetchStudents(classId) {
+        return apiClient.get(`/classes/${classId}/students`)
+    },
+
+    addStudent(newStudent, classId) {
+        return apiClient.post(`/classes/${classId}/students`, newStudent)
+    },
+
+    deleteStudent(studentId) {
+        return apiClient.delete(`/students/${studentId}`)
+    },
+
+    editStudent(student) {
+        return apiClient.put(`/students/${student.id}`, student)
     }
 }

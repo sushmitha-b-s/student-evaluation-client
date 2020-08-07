@@ -39,7 +39,12 @@
     <v-container>
       <v-row>
         <v-col v-for="batch in classes" :key="batch.id" xs="12" sm="6" md="4">
-          <ClassItem :batch="batch" />
+          <router-link
+            :to="{ name: 'students', params: { classId: batch.id } }"
+            class="removeUnderline"
+          >
+            <ClassItem :batch="batch" />
+          </router-link>
         </v-col>
       </v-row>
     </v-container>
@@ -62,11 +67,7 @@ export default {
     return {
       dialog: false,
       loading: false,
-      newBatch: {
-        batchNo: null,
-        startDate: null,
-        endDate: null
-      }
+      newBatch: this.createNewClass()
     };
   },
 
@@ -88,9 +89,18 @@ export default {
 
   methods: {
     addNewClass(newBatch) {
-      this.$store
-        .dispatch("classes/add", newBatch)
-        .then(() => (this.dialog = false));
+      this.$store.dispatch("classes/add", newBatch).then(() => {
+        this.dialog = false;
+        this.newBatch = this.createNewClass();
+      });
+    },
+
+    createNewClass() {
+      return {
+        batchNo: null,
+        startDate: null,
+        endDate: null
+      };
     }
   }
 };
@@ -103,5 +113,9 @@ span {
     display: block;
     margin: 100px auto 30px auto;
   }
+}
+
+.removeUnderline {
+  text-decoration: none;
 }
 </style>

@@ -1,5 +1,5 @@
 <template>
-  <nav class="pa-4 white">
+  <nav class="pa-4">
     <div class="logo font-weight-medium">
       <router-link :to="{ name: 'home' }">
         <v-icon left>mdi-school</v-icon>
@@ -45,13 +45,18 @@ export default {
 }
 
 nav {
-  position: sticky;
-  top: 0;
   display: flex;
   justify-content: space-around;
-  backdrop-filter: blur(6px);
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 1;
+  background-color: rgb(255, 255, 255, 0.7);
+  backdrop-filter: blur(4px);
+  border-bottom: 1px solid rgb(212, 207, 207);
+
   .logo {
-    font-size: 18px;
+    font-size: 20px;
     a {
       border: none;
     }
