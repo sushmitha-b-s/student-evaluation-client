@@ -10,7 +10,7 @@
       <p>Please wait while loading...</p>
     </span>
 
-    <h2 class="text-sm-h2 text-xs-h3 text-center mt-5" v-if="!loading">Students List</h2>
+    <h2 class="text-sm-h2 text-xs-h3 text-center mt-5" v-if="hasStudents && !loading">Students List</h2>
 
     <div class="text-center mt-10" v-if="!loading">
       <v-dialog v-model="dialog" width="500">
@@ -37,6 +37,10 @@
     </div>
 
     <v-container>
+      <v-btn text class="text-lowercase text-center ml-4" @click="goToClassList">
+        <v-icon left>mdi-arrow-left</v-icon>
+        <span>Back to class list</span>
+      </v-btn>
       <v-row>
         <v-col v-for="student in students" :key="student.id" xs="12" sm="6" md="4">
           <!-- <router-link
@@ -70,14 +74,7 @@ export default {
     return {
       loading: false,
       dialog: false,
-      student: {
-        name: "",
-        profilePic: "",
-        address: "",
-        zipcode: "",
-        city: "",
-        country: ""
-      }
+      student: this.createNewStudent()
     };
   },
 
@@ -107,13 +104,23 @@ export default {
         })
         .then(() => {
           this.dialog = false;
-          this.student.name = "";
-          this.student.profilePic = "";
-          this.student.address = "";
-          this.student.zipcode = "";
-          this.student.city = "";
-          this.student.country = "";
+          this.student = this.createNewStudent();
         });
+    },
+
+    goToClassList() {
+      this.$router.push({ name: "classes" });
+    },
+
+    createNewStudent() {
+      return {
+        name: "",
+        profilePic: "",
+        address: "",
+        zipcode: "",
+        city: "",
+        country: ""
+      };
     }
   }
 };
