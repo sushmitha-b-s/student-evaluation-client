@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card shaped class="ma-5">
+    <v-card class="ma-5">
       <v-card-title>
         <h3>Batch #{{ batch.batchNo }}</h3>
       </v-card-title>
@@ -9,16 +9,27 @@
         <p>
           <span class="text-uppercase font-weight-medium">start date:</span>
           <span>
-            <v-chip label class="ml-3">{{ format(new Date(batch.startDate), 'dd MMM yyyy') }}</v-chip>
+            <v-chip
+              label
+              outlined
+              class="ml-3"
+            >{{ format(new Date(batch.startDate), 'dd MMM yyyy') }}</v-chip>
           </span>
         </p>
 
         <p>
           <span class="text-uppercase font-weight-medium">end date:</span>
           <span>
-            <v-chip label class="ml-6">{{ format(new Date(batch.endDate), 'dd MMM yyyy') }}</v-chip>
+            <v-chip label outlined class="ml-6">{{ format(new Date(batch.endDate), 'dd MMM yyyy') }}</v-chip>
           </span>
         </p>
+
+        <div class="text-center">
+          <v-chip outlined>
+            <v-icon>mdi-account</v-icon>
+            {{ noOfStudents }} students
+          </v-chip>
+        </div>
       </v-card-text>
 
       <v-card-actions>
@@ -63,6 +74,12 @@ export default {
       this.$store.dispatch("classes/delete", this.batch).then(() => {
         this.loading = false;
       });
+    }
+  },
+
+  computed: {
+    noOfStudents() {
+      return this.batch.students && this.batch.students.length;
     }
   }
 };
