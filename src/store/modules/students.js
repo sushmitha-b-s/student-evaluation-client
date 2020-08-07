@@ -16,7 +16,6 @@ export const actions = {
     fetch({ commit }, classId) {
         return service.fetchStudents(classId)
             .then(({ data }) => {
-                console.log(data)
                 commit('SET_STUDENTS', data.students)
             })
             .catch(error => {
