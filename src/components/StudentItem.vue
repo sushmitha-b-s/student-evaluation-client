@@ -21,7 +21,7 @@
           <v-icon right>mdi-pencil</v-icon>
         </v-btn>
         <v-spacer></v-spacer>
-        <v-btn color="primary" outlined>
+        <v-btn color="primary" outlined @click="deleteStudent" :loading="loading">
           delete
           <v-icon right>mdi-delete</v-icon>
         </v-btn>
@@ -40,11 +40,26 @@ export default {
     }
   },
 
+  data() {
+    return {
+      loading: false
+    };
+  },
+
   computed: {
     getLatestColorCode() {
       return this.student.evaluations.length
         ? this.student.evaluations[0].colorcode
         : "none";
+    }
+  },
+
+  methods: {
+    deleteStudent() {
+      this.loading = true;
+      this.$store.dispatch("students/delete", this.student).then(() => {
+        this.loading = false;
+      });
     }
   }
 };

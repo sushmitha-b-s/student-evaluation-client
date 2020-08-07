@@ -32,5 +32,9 @@ export const service = {
 
     addStudent(newStudent, classId) {
         return apiClient.post(`/classes/${classId}/students`, newStudent)
+    },
+
+    deleteStudent(studentId) {
+        return apiClient.delete(`/students/${studentId}`)
     }
 }
