@@ -1,7 +1,7 @@
 <template>
   <div>
     <v-form @submit.prevent="submit">
-      <v-text-field v-model="student.name" prepend-icon="mdi-account" label="Name" />
+      <v-text-field v-model="student.name" autofocus prepend-icon="mdi-account" label="Name" />
 
       <v-text-field
         v-model="student.profilePic"

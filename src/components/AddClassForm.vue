@@ -3,6 +3,7 @@
     <v-form @submit.prevent="submit">
       <v-text-field
         label="Batch Number"
+        autofocus
         prepend-icon="mdi-numeric"
         v-model.number="batch.batchNo"
         hint="Please enter only in number format"
