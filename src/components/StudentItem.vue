@@ -5,7 +5,7 @@
         <h3>{{ student.name }}</h3>
       </v-card-title>
 
-      <v-card-text>
+      <v-card-text class="pb-0">
         <figure>
           <img :src="student.profilePic" alt="student image" />
         </figure>
@@ -14,6 +14,18 @@
           <p class="ml-2 colorcode" :class="`-text-${getLatestColorCode}`" />
         </div>
       </v-card-text>
+
+      <v-card-actions>
+        <v-btn color="primary" outlined>
+          edit
+          <v-icon right>mdi-pencil</v-icon>
+        </v-btn>
+        <v-spacer></v-spacer>
+        <v-btn color="primary" outlined>
+          delete
+          <v-icon right>mdi-delete</v-icon>
+        </v-btn>
+      </v-card-actions>
     </v-card>
   </div>
 </template>

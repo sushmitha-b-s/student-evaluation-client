@@ -28,5 +28,9 @@ export const service = {
 
     fetchStudents(classId) {
         return apiClient.get(`/classes/${classId}/students`)
+    },
+
+    addStudent(newStudent, classId) {
+        return apiClient.post(`/classes/${classId}/students`, newStudent)
     }
 }

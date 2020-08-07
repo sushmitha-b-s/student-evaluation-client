@@ -29,7 +29,9 @@
             </v-btn>
           </v-card-title>
 
-          <v-card-text>It will be done soon.</v-card-text>
+          <v-card-text>
+            <AddStudentForm :student="student" @clicked:add-student="addNewStudent" />
+          </v-card-text>
         </v-card>
       </v-dialog>
     </div>
@@ -52,12 +54,14 @@
 <script>
 import { mapGetters } from "vuex";
 import StudentItem from "@/components/StudentItem";
+import AddStudentForm from "../components/AddStudentForm";
 
 export default {
   name: "StudentsList",
 
   components: {
-    StudentItem
+    StudentItem,
+    AddStudentForm
   },
 
   props: ["classId"],
@@ -65,7 +69,15 @@ export default {
   data() {
     return {
       loading: false,
-      dialog: false
+      dialog: false,
+      student: {
+        name: "",
+        profilePic: "",
+        address: "",
+        zipcode: "",
+        city: "",
+        country: ""
+      }
     };
   },
 
@@ -83,6 +95,25 @@ export default {
 
     hasStudents() {
       return !!(this.students && this.students.length);
+    }
+  },
+
+  methods: {
+    addNewStudent(newStudent) {
+      this.$store
+        .dispatch("students/add", {
+          newStudent,
+          classId: this.classId
+        })
+        .then(() => {
+          this.dialog = false;
+          this.student.name = "";
+          this.student.profilePic = "";
+          this.student.address = "";
+          this.student.zipcode = "";
+          this.student.city = "";
+          this.student.country = "";
+        });
     }
   }
 };
