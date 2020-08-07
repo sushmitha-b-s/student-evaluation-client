@@ -12,29 +12,29 @@
 
     <h2 class="text-sm-h2 text-xs-h3 text-center mt-5" v-if="hasStudents && !loading">Students List</h2>
 
-    <div class="text-center mt-10" v-if="!loading">
-      <v-dialog v-model="dialog" width="500">
-        <template v-slot:activator="{ on, attrs }">
-          <v-btn color="primary" dark v-bind="attrs" v-on="on">
-            <v-icon>mdi-plus</v-icon>add new student
-          </v-btn>
-        </template>
-
-        <v-card>
-          <v-card-title class="headline">
-            <p>Add new student</p>
-            <v-spacer></v-spacer>
-            <v-btn icon ml-4 @click="dialog = false">
-              <v-icon>mdi-close</v-icon>
-            </v-btn>
-          </v-card-title>
-
-          <v-card-text>
-            <AddStudentForm :student="student" @clicked:add-student="addNewStudent" />
-          </v-card-text>
-        </v-card>
-      </v-dialog>
+    <div class="text-center mt-10">
+      <v-btn color="primary" @click.stop.prevent="dialog = true" v-if="!loading">
+        <v-icon>mdi-plus</v-icon>
+        <span>add new student</span>
+      </v-btn>
     </div>
+
+    <!-- dialog for adding class -->
+    <v-dialog v-model="dialog" width="500">
+      <v-card>
+        <v-card-title class="headline">
+          <p>Add new student</p>
+          <v-spacer></v-spacer>
+          <v-btn icon ml-4 @click="dialog = false">
+            <v-icon>mdi-close</v-icon>
+          </v-btn>
+        </v-card-title>
+
+        <v-card-text>
+          <AddStudentForm :student="student" @clicked:add-student="addNewStudent" />
+        </v-card-text>
+      </v-card>
+    </v-dialog>
 
     <v-container>
       <v-btn text class="text-lowercase text-center ml-4" @click="goToClassList">
@@ -43,12 +43,12 @@
       </v-btn>
       <v-row>
         <v-col v-for="student in students" :key="student.id" xs="12" sm="6" md="4">
-          <!-- <router-link
+          <router-link
             :to="{ name: 'student', params: { classId: classId , studentId: student.id } }"
             class="removeUnderline"
-          >-->
-          <StudentItem :student="student" />
-          <!-- </router-link> -->
+          >
+            <StudentItem :student="student" />
+          </router-link>
         </v-col>
       </v-row>
     </v-container>

@@ -27,7 +27,8 @@
         <div class="text-center">
           <v-chip outlined>
             <v-icon>mdi-account</v-icon>
-            {{ noOfStudents }} students
+            <span v-if="noOfStudents <= 1">{{ noOfStudents }} student</span>
+            <span v-else>{{ noOfStudents }} students</span>
           </v-chip>
         </div>
       </v-card-text>

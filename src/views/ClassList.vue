@@ -67,11 +67,7 @@ export default {
     return {
       dialog: false,
       loading: false,
-      newBatch: {
-        batchNo: null,
-        startDate: null,
-        endDate: null
-      }
+      newBatch: this.createNewClass()
     };
   },
 
@@ -95,10 +91,16 @@ export default {
     addNewClass(newBatch) {
       this.$store.dispatch("classes/add", newBatch).then(() => {
         this.dialog = false;
-        this.newBatch.batchNo = null;
-        this.newBatch.startDate = null;
-        this.newBatch.endDate = null;
+        this.newBatch = this.createNewClass();
       });
+    },
+
+    createNewClass() {
+      return {
+        batchNo: null,
+        startDate: null,
+        endDate: null
+      };
     }
   }
 };

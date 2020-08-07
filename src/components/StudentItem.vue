@@ -16,15 +16,13 @@
       </v-card-text>
 
       <v-card-actions>
+        <v-btn color="primary" outlined @click.stop.prevent="dialog = true">
+          edit
+          <v-icon right>mdi-pencil</v-icon>
+        </v-btn>
+
         <!-- modal for editing student -->
         <v-dialog v-model="dialog" width="500">
-          <template v-slot:activator="{ on, attrs }">
-            <v-btn color="primary" outlined v-bind="attrs" v-on="on">
-              edit
-              <v-icon right>mdi-pencil</v-icon>
-            </v-btn>
-          </template>
-
           <v-card>
             <v-card-title class="headline">
               <p>Edit a student</p>
@@ -41,7 +39,7 @@
         </v-dialog>
         <v-spacer></v-spacer>
         <!-- delete student -->
-        <v-btn color="primary" outlined @click="deleteStudent" :loading="loading">
+        <v-btn color="primary" outlined @click.prevent="deleteStudent" :loading="loading">
           delete
           <v-icon right>mdi-delete</v-icon>
         </v-btn>
