@@ -16,11 +16,31 @@
       </v-card-text>
 
       <v-card-actions>
-        <v-btn color="primary" outlined>
-          edit
-          <v-icon right>mdi-pencil</v-icon>
-        </v-btn>
+        <!-- modal for editing student -->
+        <v-dialog v-model="dialog" width="500">
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn color="primary" outlined v-bind="attrs" v-on="on">
+              edit
+              <v-icon right>mdi-pencil</v-icon>
+            </v-btn>
+          </template>
+
+          <v-card>
+            <v-card-title class="headline">
+              <p>Edit a student</p>
+              <v-spacer></v-spacer>
+              <v-btn icon ml-4 @click="dialog = false">
+                <v-icon>mdi-close</v-icon>
+              </v-btn>
+            </v-card-title>
+
+            <v-card-text>
+              <AddStudentForm :student="{...student}" @clicked:edit-student="editStudent" />
+            </v-card-text>
+          </v-card>
+        </v-dialog>
         <v-spacer></v-spacer>
+        <!-- delete student -->
         <v-btn color="primary" outlined @click="deleteStudent" :loading="loading">
           delete
           <v-icon right>mdi-delete</v-icon>
@@ -31,7 +51,13 @@
 </template>
 
 <script>
+import AddStudentForm from "@/components/AddStudentForm";
+
 export default {
+  components: {
+    AddStudentForm
+  },
+
   props: {
     student: {
       type: Object,
@@ -42,7 +68,8 @@ export default {
 
   data() {
     return {
-      loading: false
+      loading: false,
+      dialog: false
     };
   },
 
@@ -59,6 +86,12 @@ export default {
       this.loading = true;
       this.$store.dispatch("students/delete", this.student).then(() => {
         this.loading = false;
+      });
+    },
+
+    editStudent(student) {
+      this.$store.dispatch("students/edit", student).then(() => {
+        this.dialog = false;
       });
     }
   }

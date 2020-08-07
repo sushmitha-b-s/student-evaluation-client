@@ -36,5 +36,9 @@ export const service = {
 
     deleteStudent(studentId) {
         return apiClient.delete(`/students/${studentId}`)
+    },
+
+    editStudent(student) {
+        return apiClient.put(`/students/${student.id}`, student)
     }
 }

@@ -52,7 +52,11 @@ export default {
 
   methods: {
     submit() {
-      this.$emit("clicked:add-student", this.student);
+      if (this.student.id) {
+        this.$emit("clicked:edit-student", this.student);
+      } else {
+        this.$emit("clicked:add-student", this.student);
+      }
     }
   }
 };

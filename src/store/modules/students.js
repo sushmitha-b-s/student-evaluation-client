@@ -17,6 +17,15 @@ export const mutations = {
 
     DELETE_STUDENT(state, id) {
         state.students = state.students.filter(student => student.id !== id)
+    },
+
+    UPDATE_STUDENT(state, student) {
+        state.students = state.students.map(s => {
+            if (s.id === student.id) {
+                s = student
+            }
+            return s
+        })
     }
 }
 
@@ -46,9 +55,19 @@ export const actions = {
             .then(({ data }) => {
                 commit('DELETE_STUDENT', data.id)
             })
-            .catch(error => [
+            .catch(error => {
                 console.log(error)
-            ])
+            })
+    },
+
+    edit({ commit }, student) {
+        return service.editStudent(student)
+            .then(({ data }) => {
+                commit('UPDATE_STUDENT', data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
 
