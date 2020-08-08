@@ -47,27 +47,7 @@
           </v-dialog>
         </div>
 
-        <p v-if="!hasEvaluations">There are no evaluations given for this student.</p>
-
-        <div v-else>
-          <v-card
-            v-for="evaluation in student.evaluations"
-            :key="evaluation.id"
-            max-width="500px"
-            class="mb-5"
-            shaped
-          >
-            <v-list-item>
-              <v-list-item-avatar :color="evaluation.colorcode"></v-list-item-avatar>
-              <v-list-item-content>
-                <v-card-text>{{ evaluation.remarks }}</v-card-text>
-                <p
-                  class="text-subtitle-2 text-end font-italic mb-0 pr-2"
-                >- {{ formattedDate(evaluation.date) }}</p>
-              </v-list-item-content>
-            </v-list-item>
-          </v-card>
-        </div>
+        <StudentEvaluationList :evaluations="student.evaluations" v-if="student" />
       </div>
     </v-container>
   </div>
@@ -75,10 +55,14 @@
 
 <script>
 import { mapGetters } from "vuex";
-import { format } from "date-fns";
+import StudentEvaluationList from "@/components/StudentEvaluationList";
 
 export default {
   name: "StudentDetailsContainer",
+
+  components: {
+    StudentEvaluationList
+  },
 
   props: ["classId", "studentId"],
 
@@ -95,11 +79,7 @@ export default {
   computed: {
     ...mapGetters({
       student: "student/student"
-    }),
-
-    hasEvaluations() {
-      return !!(this.student && this.student.evaluations.length);
-    }
+    })
   },
 
   methods: {
@@ -108,10 +88,6 @@ export default {
         name: "students",
         params: { classId: this.classId }
       });
-    },
-
-    formattedDate(evalDate) {
-      return evalDate ? format(new Date(evalDate), "dd MMM yyyy") : "";
     }
   }
 };
