@@ -11,13 +11,23 @@
         persistent-hint
       />
 
+      <v-text-field v-model="student.email" prepend-icon="mdi-image" label="Email Id" />
+
+      <v-text-field
+        v-model="student.phone"
+        prepend-icon="mdi-image"
+        label="Mobile No."
+        hint="Eg: +31 645782149"
+        persistent-hint
+      />
+
       <v-textarea
         v-model="student.address"
         prepend-icon="mdi-map-marker"
         label="Address"
         rows="2"
         auto-grow
-      ></v-textarea>
+      />
 
       <v-text-field
         v-model="student.zipcode"

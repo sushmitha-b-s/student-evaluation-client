@@ -14,9 +14,26 @@
           <v-card-title class="pt-0 text-h4 text--primary">{{ student.name }}</v-card-title>
           <v-card-subtitle>Batch #{{ student.class.batchNo }}</v-card-subtitle>
           <v-card-text class="subtitle-1">
-            <div>Address: {{ student.address }}, {{ student.zipcode }}</div>
-            <div>City: {{ student.city }}</div>
-            <div>Country: {{ student.country }}</div>
+            <div>
+              <strong>Address:</strong>
+              {{ student.address }}, {{ student.zipcode }}
+            </div>
+            <div>
+              <strong>City:</strong>
+              {{ student.city }}
+            </div>
+            <div>
+              <strong>Country:</strong>
+              {{ student.country }}
+            </div>
+            <div class="mt-4">
+              <strong>Email-Id:</strong>
+              {{ student.email }}
+            </div>
+            <div>
+              <strong>Mobile No.:</strong>
+              {{ student.phone }}
+            </div>
           </v-card-text>
         </v-card-text>
       </v-card>
