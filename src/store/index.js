@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import * as auth from './modules/auth'
 import * as classes from './modules/classes'
 import * as students from './modules/students'
+import * as student from './modules/student'
 
 Vue.use(Vuex)
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
   modules: {
     auth,
     classes,
-    students
+    students,
+    student
   }
 })

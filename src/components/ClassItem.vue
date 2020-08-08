@@ -9,18 +9,14 @@
         <p>
           <span class="text-uppercase font-weight-medium">start date:</span>
           <span>
-            <v-chip
-              label
-              outlined
-              class="ml-3"
-            >{{ format(new Date(batch.startDate), 'dd MMM yyyy') }}</v-chip>
+            <v-chip label outlined class="ml-3">{{ formatDate(batch.startDate) }}</v-chip>
           </span>
         </p>
 
         <p>
           <span class="text-uppercase font-weight-medium">end date:</span>
           <span>
-            <v-chip label outlined class="ml-6">{{ format(new Date(batch.endDate), 'dd MMM yyyy') }}</v-chip>
+            <v-chip label outlined class="ml-6">{{ formatDate(batch.endDate) }}</v-chip>
           </span>
         </p>
 
@@ -50,7 +46,7 @@
 </template>
 
 <script>
-import { format } from "date-fns";
+import formatDate from "../utils/formatDate";
 
 export default {
   name: "ClassItem",
@@ -65,7 +61,7 @@ export default {
   data() {
     return {
       loading: false,
-      format
+      formatDate
     };
   },
 

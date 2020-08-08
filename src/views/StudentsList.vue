@@ -116,6 +116,8 @@ export default {
       return {
         name: "",
         profilePic: "",
+        email: "",
+        phone: "",
         address: "",
         zipcode: "",
         city: "",

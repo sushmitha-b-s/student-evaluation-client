@@ -59,7 +59,7 @@
 </template>
 
 <script>
-import { format } from "date-fns";
+import formatDate from "../utils/formatDate";
 
 export default {
   name: "AddClassForm",
@@ -82,18 +82,15 @@ export default {
   methods: {
     submit() {
       this.$emit("clicked:add-class", this.batch);
-    },
-    formatDate(date) {
-      return format(new Date(date), "dd MMM yyyy");
     }
   },
 
   computed: {
     formattedStartDate() {
-      return this.batch.startDate ? this.formatDate(this.batch.startDate) : "";
+      return formatDate(this.batch.startDate);
     },
     formattedEndDate() {
-      return this.batch.endDate ? this.formatDate(this.batch.endDate) : "";
+      return formatDate(this.batch.endDate);
     }
   }
 };
