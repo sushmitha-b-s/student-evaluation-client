@@ -19,7 +19,7 @@
           </v-card-title>
 
           <v-card-text>
-            <p>form goes here</p>
+            <AddEvaluationForm @clicked:add-evaluation="addEvaluation" />
           </v-card-text>
         </v-card>
       </v-dialog>
@@ -43,12 +43,14 @@
 
 <script>
 import StudentEvaluationItem from "./StudentEvaluationItem";
+import AddEvaluationForm from "../components/AddEvaluationForm";
 
 export default {
   name: "StudentEvaluationList",
 
   components: {
-    StudentEvaluationItem
+    StudentEvaluationItem,
+    AddEvaluationForm
   },
 
   data() {
@@ -62,12 +64,26 @@ export default {
       type: Array,
       required: true,
       default: () => []
+    },
+
+    studentId: {
+      type: Number,
+      required: true
     }
   },
 
   computed: {
     hasEvaluations() {
       return !!(this.evaluations && this.evaluations.length);
+    }
+  },
+
+  methods: {
+    addEvaluation(newEvaluation) {
+      this.$store.dispatch("student/addEvaluation", {
+        newEvaluation,
+        studentId: this.studentId
+      });
     }
   }
 };

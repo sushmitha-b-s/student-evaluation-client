@@ -21,7 +21,11 @@
         </v-card-text>
       </v-card>
 
-      <StudentEvaluationList :evaluations="student.evaluations" v-if="student" />
+      <StudentEvaluationList
+        :evaluations="student.evaluations"
+        :studentId="parseInt(studentId)"
+        v-if="student"
+      />
     </v-container>
   </div>
 </template>

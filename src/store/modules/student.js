@@ -9,6 +9,10 @@ export const state = {
 export const mutations = {
     SET_STUDENT(state, student) {
         state.student = student
+    },
+
+    ADD_EVALUATION(state, evaluation) {
+        state.student.evaluations.unshift(evaluation)
     }
 }
 
@@ -20,6 +24,13 @@ export const actions = {
             })
             .catch(error => {
                 console.log(error)
+            })
+    },
+
+    addEvaluation({ commit }, { newEvaluation, studentId }) {
+        return service.addEvaluation(newEvaluation, studentId)
+            .then(({ data }) => {
+                commit('ADD_EVALUATION', data)
             })
     }
 }
