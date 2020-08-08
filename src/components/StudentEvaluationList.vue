@@ -2,11 +2,13 @@
   <div>
     <h2 class="text-h4 my-7">Evaluations</h2>
 
-    <div class="mb-7">
-      <v-btn color="secondary" @click="dialog = true">
-        <v-icon left>mdi-plus</v-icon>
-        <span>Add an evaluation</span>
-      </v-btn>
+    <div class="d-inline-flex mb-7">
+      <v-flex class="mr-5">
+        <v-btn color="secondary" @click="dialog = true">
+          <v-icon left>mdi-plus</v-icon>
+          <span>Add an evaluation</span>
+        </v-btn>
+      </v-flex>
 
       <v-dialog v-model="dialog" width="500">
         <v-card>
@@ -23,6 +25,30 @@
           </v-card-text>
         </v-card>
       </v-dialog>
+
+      <!-- sort by date -->
+      <v-flex class="ml-5">
+        <v-menu offset-y>
+          <template v-slot:activator="{ on, attrs }">
+            <v-btn color="secondary" dark v-bind="attrs" v-on="on">
+              <v-icon left>mdi-sort</v-icon>
+              <span>Sort by date</span>
+            </v-btn>
+          </template>
+          <v-list>
+            <v-list-item
+              v-for="(item, index) in sortByItems"
+              :key="index"
+              @click="sortBy(item.type)"
+            >
+              <v-list-item-title>
+                <v-icon left>{{ item.icon }}</v-icon>
+                <span>{{ item.type }}</span>
+              </v-list-item-title>
+            </v-list-item>
+          </v-list>
+        </v-menu>
+      </v-flex>
     </div>
 
     <p v-if="!hasEvaluations">There are no evaluations given for this student.</p>
@@ -78,6 +104,13 @@ export default {
   computed: {
     hasEvaluations() {
       return !!(this.evaluations && this.evaluations.length);
+    },
+
+    sortByItems() {
+      return [
+        { icon: "mdi-sort-ascending", type: "ASC" },
+        { icon: "mdi-sort-descending", type: "DESC" }
+      ];
     }
   },
 
@@ -95,6 +128,14 @@ export default {
 
     deleteEvaluation(evaluation) {
       this.$store.dispatch("student/deleteEvaluation", evaluation);
+    },
+
+    sortBy(type) {
+      if (type === "ASC") {
+        return this.evaluations.sort((a, b) => (a.date < b.date ? -1 : 1));
+      } else {
+        return this.evaluations.sort((a, b) => (a.date < b.date ? 1 : -1));
+      }
     }
   }
 };
