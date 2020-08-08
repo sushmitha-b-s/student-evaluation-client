@@ -40,5 +40,9 @@ export const service = {
 
     editStudent(student) {
         return apiClient.put(`/students/${student.id}`, student)
+    },
+
+    fetchStudent(studentId) {
+        return apiClient.get(`/students/${studentId}`)
     }
 }
