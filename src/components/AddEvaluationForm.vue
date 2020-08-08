@@ -12,7 +12,7 @@
         <template v-slot:activator="{ on, attrs }">
           <v-text-field
             v-model="formattedDate"
-            label="select date"
+            label="Select date"
             prepend-icon="mdi-calendar-range"
             readonly
             v-bind="attrs"
@@ -22,12 +22,19 @@
         <v-date-picker v-model="evaluation.date" @input="menu1 = false"></v-date-picker>
       </v-menu>
 
-      <v-radio-group v-model="evaluation.colorcode" prepend-icon="mdi-palette">
+      <v-radio-group
+        v-model="evaluation.colorcode"
+        prepend-icon="mdi-palette"
+        row
+        hint="Select the color code"
+        persistent-hint
+      >
         <v-radio
           v-for="color in colors"
           :key="color"
           :label="color"
-          :value="color"
+          :value="color.toLowerCase()"
+          :color="color.toLowerCase()"
           class="`-value-${color}`"
         ></v-radio>
       </v-radio-group>
@@ -50,7 +57,7 @@ export default {
     return {
       menu1: false,
       evaluation: this.createNewEvaluation(),
-      colors: ["red", "yellow", "green"]
+      colors: ["Red", "Yellow", "Green"]
     };
   },
 
