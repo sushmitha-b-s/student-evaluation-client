@@ -13,6 +13,10 @@ export const mutations = {
 
     ADD_EVALUATION(state, evaluation) {
         state.student.evaluations.unshift(evaluation)
+    },
+
+    DELETE_EVALUATION(state, id) {
+        state.student.evaluations = state.student.evaluations.filter(e => e.id !== id)
     }
 }
 
@@ -31,6 +35,19 @@ export const actions = {
         return service.addEvaluation(newEvaluation, studentId)
             .then(({ data }) => {
                 commit('ADD_EVALUATION', data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
+    },
+
+    deleteEvaluation({ commit }, evaluation) {
+        return service.deleteEvaluation(evaluation.id)
+            .then(({ data }) => {
+                commit('DELETE_EVALUATION', data.id)
+            })
+            .catch(error => {
+                console.log(error)
             })
     }
 }

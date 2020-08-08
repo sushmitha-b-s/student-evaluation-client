@@ -48,5 +48,9 @@ export const service = {
 
     addEvaluation(newEvaluation, studentId) {
         return apiClient.post(`/students/${studentId}/evaluations`, newEvaluation)
+    },
+
+    deleteEvaluation(evaluationId) {
+        return apiClient.delete(`/evaluations/${evaluationId}`)
     }
 }

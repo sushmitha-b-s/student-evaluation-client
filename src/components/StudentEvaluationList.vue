@@ -35,7 +35,10 @@
         class="mb-5"
         shaped
       >
-        <StudentEvaluationItem :evaluation="evaluation" />
+        <StudentEvaluationItem
+          :evaluation="evaluation"
+          @clicked:delete-evaluation="deleteEvaluation"
+        />
       </v-card>
     </div>
   </div>
@@ -88,6 +91,10 @@ export default {
         .then(() => {
           this.dialog = false;
         });
+    },
+
+    deleteEvaluation(evaluation) {
+      this.$store.dispatch("student/deleteEvaluation", evaluation);
     }
   }
 };
