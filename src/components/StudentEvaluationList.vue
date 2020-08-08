@@ -80,10 +80,14 @@ export default {
 
   methods: {
     addEvaluation(newEvaluation) {
-      this.$store.dispatch("student/addEvaluation", {
-        newEvaluation,
-        studentId: this.studentId
-      });
+      this.$store
+        .dispatch("student/addEvaluation", {
+          newEvaluation,
+          studentId: this.studentId
+        })
+        .then(() => {
+          this.dialog = false;
+        });
     }
   }
 };

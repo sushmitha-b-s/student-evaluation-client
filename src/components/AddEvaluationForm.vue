@@ -11,7 +11,7 @@
       >
         <template v-slot:activator="{ on, attrs }">
           <v-text-field
-            v-model="evaluation.date"
+            v-model="formattedDate"
             label="select date"
             prepend-icon="mdi-calendar-range"
             readonly
@@ -41,6 +41,8 @@
 </template>
 
 <script>
+import { format } from "date-fns";
+
 export default {
   name: "AddEvaluationForm",
 
@@ -63,6 +65,14 @@ export default {
 
     submit() {
       this.$emit("clicked:add-evaluation", this.evaluation);
+    }
+  },
+
+  computed: {
+    formattedDate() {
+      return this.evaluation.date
+        ? format(new Date(this.evaluation.date), "dd MMM yyyy")
+        : "";
     }
   }
 };
