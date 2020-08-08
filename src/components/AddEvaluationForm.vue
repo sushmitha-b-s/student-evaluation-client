@@ -41,7 +41,7 @@
 </template>
 
 <script>
-import { format } from "date-fns";
+import formatDate from "../utils/formatDate";
 
 export default {
   name: "AddEvaluationForm",
@@ -70,9 +70,7 @@ export default {
 
   computed: {
     formattedDate() {
-      return this.evaluation.date
-        ? format(new Date(this.evaluation.date), "dd MMM yyyy")
-        : "";
+      return formatDate(this.evaluation.date);
     }
   }
 };
