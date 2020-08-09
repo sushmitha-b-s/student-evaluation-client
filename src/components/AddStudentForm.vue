@@ -17,7 +17,7 @@
         v-model="student.phone"
         prepend-icon="mdi-image"
         label="Mobile No."
-        hint="Eg: +31 645782149"
+        hint="Eg: 0645782149"
         persistent-hint
       />
 

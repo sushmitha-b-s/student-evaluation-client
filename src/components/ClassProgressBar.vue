@@ -1,5 +1,11 @@
 <template>
   <div class="progress__bar">
+    <p>
+      <v-icon>mdi-information-outline</v-icon>
+      <span
+        class="text-subtitle-2 font-weight-regular"
+      >The progress bar represents the percentage of students evaluated by RED, YELLOW or GREEN.</span>
+    </p>
     <div
       class="red"
       :style="{ width: progressbar.redPercentage + '%'}"
