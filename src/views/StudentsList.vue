@@ -12,8 +12,10 @@
 
     <h2 class="text-sm-h2 text-xs-h3 text-center mt-5" v-if="hasStudents && !loading">Students List</h2>
 
-    <div class="text-center mt-10">
-      <v-btn color="primary" @click.stop.prevent="dialog = true" v-if="!loading">
+    <div class="d-flex justify-space-around flex-wrap align-center my-7">
+      <ClassProgressBar :progressbar="progressbar" v-if="!loading" />
+
+      <v-btn color="primary text-end" @click.stop.prevent="dialog = true" v-if="!loading">
         <v-icon>mdi-plus</v-icon>
         <span>add new student</span>
       </v-btn>
@@ -59,13 +61,15 @@
 import { mapGetters } from "vuex";
 import StudentItem from "@/components/StudentItem";
 import AddStudentForm from "../components/AddStudentForm";
+import ClassProgressBar from "../components/ClassProgressBar";
 
 export default {
   name: "StudentsList",
 
   components: {
     StudentItem,
-    AddStudentForm
+    AddStudentForm,
+    ClassProgressBar
   },
 
   props: ["classId"],
@@ -83,11 +87,13 @@ export default {
     this.$store.dispatch("students/fetch", this.classId).then(() => {
       this.loading = false;
     });
+    this.$store.dispatch("students/getProgressBarCalc", this.classId);
   },
 
   computed: {
     ...mapGetters({
-      students: "students/all"
+      students: "students/all",
+      progressbar: "students/getProgressBar"
     }),
 
     hasStudents() {

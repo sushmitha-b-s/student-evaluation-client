@@ -30,6 +30,10 @@ export const service = {
         return apiClient.get(`/classes/${classId}/students`)
     },
 
+    fetchProgressBarCalc(classId) {
+        return apiClient.get(`/progressbar/${classId}`)
+    },
+
     addStudent(newStudent, classId) {
         return apiClient.post(`/classes/${classId}/students`, newStudent)
     },

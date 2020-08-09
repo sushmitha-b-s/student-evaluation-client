@@ -3,7 +3,8 @@ import { service } from '@/services/service'
 export const namespaced = true
 
 export const state = {
-    students: []
+    students: [],
+    progressbar: {}
 }
 
 export const mutations = {
@@ -26,6 +27,10 @@ export const mutations = {
             }
             return s
         })
+    },
+
+    SET_PROGRESS_BAR_CALC(state, data) {
+        state.progressbar = data
     }
 }
 
@@ -68,9 +73,20 @@ export const actions = {
             .catch(error => {
                 console.log(error)
             })
+    },
+
+    getProgressBarCalc({ commit }, classId) {
+        return service.fetchProgressBarCalc(classId)
+            .then(({ data }) => {
+                commit('SET_PROGRESS_BAR_CALC', data)
+            })
+            .catch(error => {
+                console.log(error)
+            })
     }
 }
 
 export const getters = {
-    all: state => state.students
+    all: state => state.students,
+    getProgressBar: state => state.progressbar
 }
