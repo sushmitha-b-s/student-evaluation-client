@@ -10,10 +10,10 @@
         @blur="$v.batch.batchNo.$touch()"
       />
 
-      <div v-if="$v.batch.batchNo.$error">
+      <template v-if="$v.batch.batchNo.$error">
         <p v-if="!$v.batch.batchNo.required" class="red--text ml-7">Batch Number is required.</p>
         <p v-if="!$v.batch.batchNo.numeric" class="red--text ml-7">Batch Number must be numeric.</p>
-      </div>
+      </template>
 
       <v-menu
         v-model="date1"
@@ -37,9 +37,9 @@
         <v-date-picker v-model="batch.startDate" @input="date1 = false"></v-date-picker>
       </v-menu>
 
-      <div v-if="$v.batch.startDate.$error">
+      <template v-if="$v.batch.startDate.$error">
         <p v-if="!$v.batch.startDate.required" class="red--text ml-7">Start date is required.</p>
-      </div>
+      </template>
 
       <v-menu
         v-model="date2"
@@ -63,9 +63,9 @@
         <v-date-picker v-model="batch.endDate" @input="date2 = false"></v-date-picker>
       </v-menu>
 
-      <div v-if="$v.batch.endDate.$error">
+      <template v-if="$v.batch.endDate.$error">
         <p v-if="!$v.batch.endDate.required" class="red--text ml-7">End date is required.</p>
-      </div>
+      </template>
 
       <div class="text-right mr-5">
         <v-btn color="primary" type="submit" :disabled="$v.$anyError || $v.$invalid">submit</v-btn>
