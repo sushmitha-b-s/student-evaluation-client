@@ -4,7 +4,7 @@
       <v-icon>mdi-information-outline</v-icon>
       <span
         class="text-subtitle-2 font-weight-regular"
-      >The progress bar represents the percentage of students evaluated by RED, YELLOW or GREEN.</span>
+      >The progress bar represents the percentage of students evaluated by RED, YELLOW or GREEN in the current class.</span>
     </p>
     <div
       class="red"
