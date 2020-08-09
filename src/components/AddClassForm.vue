@@ -97,18 +97,18 @@ export default {
     };
   },
 
-  updated() {
-    if (this.submitted) {
-      this.$v.$reset();
-      this.submitted = false;
-    }
-  },
-
   validations: {
     batch: {
       batchNo: { required, numeric },
       startDate: { required },
       endDate: { required }
+    }
+  },
+
+  updated() {
+    if (this.submitted) {
+      this.$v.$reset();
+      this.submitted = false;
     }
   },
 
