@@ -8,14 +8,17 @@
     </p>
     <div
       class="red"
+      v-if="parseInt(progressbar.redPercentage) !== 0"
       :style="{ width: progressbar.redPercentage + '%'}"
     >{{ progressbar.redPercentage }}%</div>
     <div
       class="yellow"
+      v-if="parseInt(progressbar.yellowPercentage) !== 0"
       :style="{ width: progressbar.yellowPercentage + '%'}"
     >{{ progressbar.yellowPercentage }}%</div>
     <div
       class="green"
+      v-if="parseInt(progressbar.greenPercentage) !== 0"
       :style="{ width: progressbar.greenPercentage + '%'}"
     >{{ progressbar.greenPercentage }}%</div>
   </div>

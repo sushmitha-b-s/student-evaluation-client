@@ -13,7 +13,7 @@
     <h2 class="text-sm-h2 text-xs-h3 text-center mt-5" v-if="hasStudents && !loading">Students List</h2>
 
     <div class="d-flex justify-space-around flex-wrap align-center my-7">
-      <ClassProgressBar :progressbar="progressbar" v-if="!loading" />
+      <ClassProgressBar :progressbar="progressbar" v-if="!loading && hasStudents" />
 
       <v-btn color="primary text-end" @click.stop.prevent="dialog = true" v-if="!loading">
         <v-icon>mdi-plus</v-icon>
