@@ -3,14 +3,20 @@
     <v-form @submit.prevent="submit">
       <v-text-field
         label="Batch Number"
-        autofocus
         prepend-icon="mdi-numeric"
         v-model.number="batch.batchNo"
         hint="Please enter only in number format"
+        persistent-hint
+        @blur="$v.batch.batchNo.$touch()"
       />
 
+      <template v-if="$v.batch.batchNo.$error">
+        <p v-if="!$v.batch.batchNo.required" class="red--text ml-7">Batch Number is required.</p>
+        <p v-if="!$v.batch.batchNo.numeric" class="red--text ml-7">Batch Number must be numeric.</p>
+      </template>
+
       <v-menu
-        v-model="menu1"
+        v-model="date1"
         :close-on-content-click="false"
         :nudge-right="40"
         transition="scale-transition"
@@ -25,13 +31,18 @@
             readonly
             v-bind="attrs"
             v-on="on"
+            @blur="$v.batch.startDate.$touch()"
           ></v-text-field>
         </template>
-        <v-date-picker v-model="batch.startDate" @input="menu1 = false"></v-date-picker>
+        <v-date-picker v-model="batch.startDate" @input="date1 = false"></v-date-picker>
       </v-menu>
 
+      <template v-if="$v.batch.startDate.$error">
+        <p v-if="!$v.batch.startDate.required" class="red--text ml-7">Start date is required.</p>
+      </template>
+
       <v-menu
-        v-model="menu2"
+        v-model="date2"
         :close-on-content-click="false"
         :nudge-right="40"
         transition="scale-transition"
@@ -46,13 +57,18 @@
             readonly
             v-bind="attrs"
             v-on="on"
+            @blur="$v.batch.endDate.$touch()"
           ></v-text-field>
         </template>
-        <v-date-picker v-model="batch.endDate" @input="menu2 = false"></v-date-picker>
+        <v-date-picker v-model="batch.endDate" @input="date2 = false"></v-date-picker>
       </v-menu>
 
+      <template v-if="$v.batch.endDate.$error">
+        <p v-if="!$v.batch.endDate.required" class="red--text ml-7">End date is required.</p>
+      </template>
+
       <div class="text-right mr-5">
-        <v-btn color="primary" type="submit">submit</v-btn>
+        <v-btn color="primary" type="submit" :disabled="$v.$anyError || $v.$invalid">submit</v-btn>
       </div>
     </v-form>
   </div>
@@ -60,6 +76,7 @@
 
 <script>
 import formatDate from "../utils/formatDate";
+import { required, numeric } from "vuelidate/lib/validators";
 
 export default {
   name: "AddClassForm",
@@ -74,13 +91,35 @@ export default {
 
   data() {
     return {
-      menu1: false,
-      menu2: false
+      date1: false,
+      date2: false,
+      submitted: false
     };
+  },
+
+  validations: {
+    batch: {
+      batchNo: { required, numeric },
+      startDate: { required },
+      endDate: { required }
+    }
+  },
+
+  updated() {
+    if (this.submitted) {
+      this.$v.$reset();
+      this.submitted = false;
+    }
   },
 
   methods: {
     submit() {
+      this.submitted = true;
+      this.$v.$touch();
+
+      if (this.$v.$invalid) {
+        return;
+      }
       this.$emit("clicked:add-class", this.batch);
     }
   },

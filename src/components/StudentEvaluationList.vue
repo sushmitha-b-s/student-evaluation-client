@@ -21,7 +21,7 @@
           </v-card-title>
 
           <v-card-text>
-            <AddEvaluationForm @clicked:add-evaluation="addEvaluation" />
+            <AddEvaluationForm :evaluation="newEvaluation" @clicked:add-evaluation="addEvaluation" />
           </v-card-text>
         </v-card>
       </v-dialog>
@@ -84,7 +84,8 @@ export default {
 
   data() {
     return {
-      dialog: false
+      dialog: false,
+      newEvaluation: this.createNewEvaluation()
     };
   },
 
@@ -115,6 +116,14 @@ export default {
   },
 
   methods: {
+    createNewEvaluation() {
+      return {
+        date: "",
+        colorcode: "",
+        remarks: ""
+      };
+    },
+
     addEvaluation(newEvaluation) {
       this.$store
         .dispatch("student/addEvaluation", {
@@ -123,6 +132,7 @@ export default {
         })
         .then(() => {
           this.dialog = false;
+          this.newEvaluation = this.createNewEvaluation();
         });
     },
 
