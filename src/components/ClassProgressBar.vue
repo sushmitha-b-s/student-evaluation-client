@@ -9,20 +9,18 @@
       </p>
       <div
         class="red"
-        v-if="parseInt(progressbar.redPercentage) !== 0"
         :style="{ width: progressbar.redPercentage + '%'}"
       >{{ progressbar.redPercentage }}%</div>
       <div
         class="yellow"
-        v-if="parseInt(progressbar.yellowPercentage) !== 0"
         :style="{ width: progressbar.yellowPercentage + '%'}"
       >{{ progressbar.yellowPercentage }}%</div>
       <div
         class="green"
-        v-if="parseInt(progressbar.greenPercentage) !== 0"
         :style="{ width: progressbar.greenPercentage + '%'}"
       >{{ progressbar.greenPercentage }}%</div>
     </template>
+
     <template v-else>
       <v-icon>mdi-information-outline</v-icon>
       <span>Provide atleast one evaluation per student to view the progress bar. To evaluate a student, click on their photo/name below.</span>

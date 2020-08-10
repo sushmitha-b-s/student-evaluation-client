@@ -90,9 +90,10 @@ export default {
     this.$store.dispatch("students/getProgressBarCalc", this.classId);
   },
 
-  updated() {
-    this.$store.dispatch("students/getProgressBarCalc", this.classId);
-  },
+  // updated() {
+  //   debugger;
+  //   this.$store.dispatch("students/getProgressBarCalc", this.classId);
+  // },
 
   computed: {
     ...mapGetters({
@@ -115,6 +116,7 @@ export default {
         .then(() => {
           this.dialog = false;
           this.student = this.createNewStudent();
+          this.$store.dispatch("students/getProgressBarCalc", this.classId);
         });
     },
 
