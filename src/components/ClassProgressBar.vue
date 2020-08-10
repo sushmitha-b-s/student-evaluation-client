@@ -25,7 +25,7 @@
     </template>
     <template v-else>
       <v-icon>mdi-information-outline</v-icon>
-      <span>Provide atleast one evaluation per student to view the progress bar.</span>
+      <span>Provide atleast one evaluation per student to view the progress bar. To evaluate a student, click on their photo/name below.</span>
     </template>
   </div>
 </template>
