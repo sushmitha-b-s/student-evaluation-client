@@ -90,6 +90,10 @@ export default {
     this.$store.dispatch("students/getProgressBarCalc", this.classId);
   },
 
+  updated() {
+    this.$store.dispatch("students/getProgressBarCalc", this.classId);
+  },
+
   computed: {
     ...mapGetters({
       students: "students/all",

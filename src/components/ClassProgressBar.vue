@@ -1,26 +1,32 @@
 <template>
   <div class="progress__bar">
-    <p>
+    <template v-if="!progressbar.none">
+      <p>
+        <v-icon>mdi-information-outline</v-icon>
+        <span
+          class="text-subtitle-2 font-weight-regular"
+        >The progress bar represents the percentage of students evaluated by RED, YELLOW or GREEN in the current class.</span>
+      </p>
+      <div
+        class="red"
+        v-if="parseInt(progressbar.redPercentage) !== 0"
+        :style="{ width: progressbar.redPercentage + '%'}"
+      >{{ progressbar.redPercentage }}%</div>
+      <div
+        class="yellow"
+        v-if="parseInt(progressbar.yellowPercentage) !== 0"
+        :style="{ width: progressbar.yellowPercentage + '%'}"
+      >{{ progressbar.yellowPercentage }}%</div>
+      <div
+        class="green"
+        v-if="parseInt(progressbar.greenPercentage) !== 0"
+        :style="{ width: progressbar.greenPercentage + '%'}"
+      >{{ progressbar.greenPercentage }}%</div>
+    </template>
+    <template v-else>
       <v-icon>mdi-information-outline</v-icon>
-      <span
-        class="text-subtitle-2 font-weight-regular"
-      >The progress bar represents the percentage of students evaluated by RED, YELLOW or GREEN in the current class.</span>
-    </p>
-    <div
-      class="red"
-      v-if="parseInt(progressbar.redPercentage) !== 0"
-      :style="{ width: progressbar.redPercentage + '%'}"
-    >{{ progressbar.redPercentage }}%</div>
-    <div
-      class="yellow"
-      v-if="parseInt(progressbar.yellowPercentage) !== 0"
-      :style="{ width: progressbar.yellowPercentage + '%'}"
-    >{{ progressbar.yellowPercentage }}%</div>
-    <div
-      class="green"
-      v-if="parseInt(progressbar.greenPercentage) !== 0"
-      :style="{ width: progressbar.greenPercentage + '%'}"
-    >{{ progressbar.greenPercentage }}%</div>
+      <span>Provide atleast one evaluation per student to view the progress bar.</span>
+    </template>
   </div>
 </template>
 

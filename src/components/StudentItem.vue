@@ -84,10 +84,6 @@ export default {
       this.loading = true;
       this.$store.dispatch("students/delete", this.student).then(() => {
         this.loading = false;
-        this.$store.dispatch(
-          "students/getProgressBarCalc",
-          this.student.classId
-        );
       });
     },
 
