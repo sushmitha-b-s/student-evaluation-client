@@ -56,5 +56,9 @@ export const service = {
 
     deleteEvaluation(evaluationId) {
         return apiClient.delete(`/evaluations/${evaluationId}`)
+    },
+
+    pickRandomStudent(classId) {
+        return apiClient.get(`/algorithm/${classId}`)
     }
 }
