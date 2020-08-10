@@ -4,7 +4,8 @@ export const namespaced = true
 
 export const state = {
     students: [],
-    progressbar: {}
+    progressbar: {},
+    randomStudent: ''
 }
 
 export const mutations = {
@@ -31,6 +32,10 @@ export const mutations = {
 
     SET_PROGRESS_BAR_CALC(state, data) {
         state.progressbar = data
+    },
+
+    SET_RANDOM_STUDENT(state, student) {
+        state.randomStudent = student
     }
 }
 
@@ -83,10 +88,21 @@ export const actions = {
             .catch(error => {
                 console.log(error)
             })
+    },
+
+    fetchRandomStudent({ commit }, classId) {
+        return service.pickRandomStudent(classId)
+            .then(({ data }) => {
+                commit('SET_RANDOM_STUDENT', data.randomStudent)
+            })
+            .catch(err => {
+                console.log(err)
+            })
     }
 }
 
 export const getters = {
     all: state => state.students,
-    getProgressBar: state => state.progressbar
+    getProgressBar: state => state.progressbar,
+    randomStudent: state => state.randomStudent
 }

@@ -15,10 +15,16 @@
     <div class="d-flex justify-space-around flex-wrap align-center my-7">
       <ClassProgressBar :progressbar="progressbar" v-if="!loading && hasStudents" />
 
-      <v-btn color="primary text-end" @click.stop.prevent="dialog = true" v-if="!loading">
-        <v-icon>mdi-plus</v-icon>
-        <span>add new student</span>
-      </v-btn>
+      <div v-if="!loading">
+        <v-btn color="primary" @click.stop.prevent="dialog = true">
+          <v-icon left>mdi-plus</v-icon>
+          <span>add new student</span>
+        </v-btn>
+
+        <div v-if="!loading" class="mt-5">
+          <AskQuestionContainer :classId="classId" />
+        </div>
+      </div>
     </div>
 
     <!-- dialog for adding class -->
@@ -62,6 +68,7 @@ import { mapGetters } from "vuex";
 import StudentItem from "@/components/StudentItem";
 import AddStudentForm from "../components/AddStudentForm";
 import ClassProgressBar from "../components/ClassProgressBar";
+import AskQuestionContainer from "../components/AskQuestionContainer";
 
 export default {
   name: "StudentsList",
@@ -69,7 +76,8 @@ export default {
   components: {
     StudentItem,
     AddStudentForm,
-    ClassProgressBar
+    ClassProgressBar,
+    AskQuestionContainer
   },
 
   props: ["classId"],
@@ -89,11 +97,6 @@ export default {
     });
     this.$store.dispatch("students/getProgressBarCalc", this.classId);
   },
-
-  // updated() {
-  //   debugger;
-  //   this.$store.dispatch("students/getProgressBarCalc", this.classId);
-  // },
 
   computed: {
     ...mapGetters({
