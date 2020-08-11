@@ -8,14 +8,17 @@
         >The progress bar represents the percentage of students evaluated by RED, YELLOW or GREEN in the current class.</span>
       </p>
       <div
+        v-if="parseInt(progressbar.redPercentage)"
         class="red"
         :style="{ width: progressbar.redPercentage + '%'}"
       >{{ progressbar.redPercentage }}%</div>
       <div
+        v-if="parseInt(progressbar.yellowPercentage)"
         class="yellow"
         :style="{ width: progressbar.yellowPercentage + '%'}"
       >{{ progressbar.yellowPercentage }}%</div>
       <div
+        v-if="parseInt(progressbar.greenPercentage)"
         class="green"
         :style="{ width: progressbar.greenPercentage + '%'}"
       >{{ progressbar.greenPercentage }}%</div>
@@ -23,7 +26,7 @@
 
     <template v-else>
       <v-icon>mdi-information-outline</v-icon>
-      <span>Provide atleast one evaluation per student to view the progress bar. To evaluate a student, click on their photo/name below.</span>
+      <span>Provide atleast one evaluation per student to view the progress bar or to ask a question. To evaluate a student, click on their photo/name below.</span>
     </template>
   </div>
 </template>

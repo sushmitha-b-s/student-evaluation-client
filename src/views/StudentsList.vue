@@ -21,8 +21,8 @@
           <span>add new student</span>
         </v-btn>
 
-        <div v-if="!loading" class="mt-5">
-          <AskQuestionContainer :classId="classId" />
+        <div class="mt-5" v-if="hasStudents">
+          <AskQuestionContainer :classId="classId" :progressbar="progressbar" />
         </div>
       </div>
     </div>

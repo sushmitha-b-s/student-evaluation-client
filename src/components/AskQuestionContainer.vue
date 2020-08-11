@@ -2,7 +2,13 @@
   <div>
     <v-tooltip bottom>
       <template v-slot:activator="{ on, attrs }">
-        <v-btn color="secondary" v-bind="attrs" v-on="on" @click.stop.prevent="pickRandomStudent">
+        <v-btn
+          color="secondary"
+          v-bind="attrs"
+          v-on="on"
+          @click.stop.prevent="pickRandomStudent"
+          :disabled="!!(progressbar.none)"
+        >
           <v-icon left>mdi-help-circle</v-icon>
           <span>Ask a question</span>
         </v-btn>
@@ -41,7 +47,17 @@ import { mapGetters } from "vuex";
 export default {
   name: "AskQuestionContainer",
 
-  props: ["classId"],
+  props: {
+    classId: {
+      type: Number,
+      required: true
+    },
+    progressbar: {
+      type: Object,
+      required: true,
+      default: () => ({})
+    }
+  },
 
   data() {
     return {
