@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 export const apiClient = axios.create({
-    baseURL: 'http://localhost:4000',
+    baseURL: 'https://student-evaluation-server.herokuapp.com',
     withCredentials: false,
     headers: {
         Accept: 'application/json',
