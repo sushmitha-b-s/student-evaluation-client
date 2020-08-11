@@ -71,7 +71,7 @@
     </section>
 
     <footer class="black white--text py-10 d-flex justify-space-around">
-      <span>Copyright © 2020 sushmitha BS. All rights reserved.</span>
+      <span>Copyright © 2020 Sushmitha BS. All rights reserved.</span>
       <a href="https://github.com/sushmitha-b-s/student-evaluation-client" target="_blank">
         <span class="white--text">To check the code, please visit my</span>
         <v-icon color="white" right>mdi-github</v-icon>
