@@ -59,6 +59,6 @@ export const service = {
     },
 
     pickRandomStudent(classId) {
-        return apiClient.get(`/algorithm/${classId}`)
+        return apiClient.get(`/askquestion/${classId}`)
     }
 }
