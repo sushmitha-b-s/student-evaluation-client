@@ -7,7 +7,7 @@
 
 The student Evaluation tool is a Full stack web application which is an optimal workflow for teachers to manage classes, students, and their evaluations all in one place. Teachers can track each student's performance by evaluating on their day-to-day basis. This repository contains only the front-end code of the application. To check the backend code, visit [Backend code](https://github.com/sushmitha-b-s/student-evaluation-server)
 
-## Technologies use
+## Technologies used
 
 - Frontend
   - HTML5, CSS3, SCSS, JavaScript, Vue.js, Vuex (state management), Vuetify and Vuelidate.
