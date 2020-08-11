@@ -105,6 +105,7 @@ export default {
         email: this.email,
         password: this.password
       };
+
       this.$store
         .dispatch("auth/register", registerDetails)
         .then(() => {
