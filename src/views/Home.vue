@@ -76,6 +76,9 @@
         <span class="white--text">To check the code, please visit my</span>
         <v-icon color="white" right>mdi-github</v-icon>
       </a>
+      <a href="https://www.linkedin.com/in/sushmitha-b-s/" target="_blank">
+        <v-icon color="white" right>mdi-linkedin</v-icon>
+      </a>
     </footer>
   </div>
 </template>
