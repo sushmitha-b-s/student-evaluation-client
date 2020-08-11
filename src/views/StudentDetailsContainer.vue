@@ -27,11 +27,15 @@
               {{ student.country }}
             </div>
             <div class="mt-4">
-              <strong>Email-Id:</strong>
+              <strong>
+                <v-icon left>mdi-email</v-icon>
+              </strong>
               {{ student.email }}
             </div>
             <div>
-              <strong>Mobile No.:</strong>
+              <strong>
+                <v-icon left>mdi-phone</v-icon>
+              </strong>
               {{ student.phone }}
             </div>
           </v-card-text>
