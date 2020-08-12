@@ -25,18 +25,12 @@ export const actions = {
             .then(({ data }) => {
                 return Promise.resolve(data)
             })
-            .catch(err => {
-                return Promise.reject(err)
-            })
     },
 
     login({ commit }, userData) {
         return service.login(userData)
             .then(({ data }) => {
                 commit('SET_USER_DATA', data)
-            })
-            .catch(err => {
-                return Promise.reject(err)
             })
     },
     logout({ commit }) {

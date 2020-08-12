@@ -62,6 +62,8 @@
               <span>Register</span>
             </v-btn>
 
+            <p v-if="error" class="red--text text-center mt-4">{{ error }}</p>
+
             <p class="mt-4 mb-0 text-center">
               <router-link :to="{ name: 'login' }">Already have an account? Login</router-link>
             </p>
@@ -82,7 +84,8 @@ export default {
       fullname: "",
       email: "",
       password: "",
-      showPassword: false
+      showPassword: false,
+      error: ""
     };
   },
 
@@ -111,7 +114,9 @@ export default {
         .then(() => {
           this.$router.push({ name: "login" });
         })
-        .catch(() => {});
+        .catch(({ response }) => {
+          this.error = response.data.error;
+        });
     }
   }
 };

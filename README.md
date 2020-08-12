@@ -1,7 +1,7 @@
 # Student Evaluation Tool
 
 ## Deployed version
-- [Check out the deployed version here](#)
+- [Check out the deployed version here](https://student-evaluation-tool.netlify.app)
 
 ## About the project
 
