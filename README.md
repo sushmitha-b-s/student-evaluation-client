@@ -36,7 +36,6 @@ The student Evaluation tool is a Full stack web application which is an optimal 
 - There are no SUCCESS or ERROR notifications. This can be built.
 
 ## Steps to run the project
-Note: The below steps doesn't work if the backend is not setup.
 
 1. Clone the repository.
     ```
