@@ -1,16 +1,18 @@
+import { v4 as uuidv4 } from 'uuid';
+
 export const namespaced = true
 
 export const state = {
     notifications: []
 }
 
-const nextId = 0
+// const nextId = 0
 
 export const mutations = {
     ADD(state, notification) {
         state.notifications.push({
             ...notification,
-            id: nextId + 1
+            id: uuidv4()
         })
     },
 

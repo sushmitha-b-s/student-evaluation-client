@@ -1,7 +1,10 @@
 <template>
   <div class="notification" :class="notificationType">
     <span>
-      <v-icon color="white" left>{{ notification.type === 'success' ? 'mdi-check': 'mdi-close' }}</v-icon>
+      <v-icon
+        color="white"
+        left
+      >{{ notification.type === 'success' ? 'mdi-check-circle': 'mdi-close-circle' }}</v-icon>
     </span>
     <span class="text-subtitle-2 white--text">{{ notification.message }}</span>
   </div>
@@ -46,9 +49,10 @@ export default {
 <style lang="scss" scoped>
 .notification {
   display: inline-block;
-  padding: 0.5rem;
+  padding: 1rem 0.5rem;
   position: fixed;
   right: 0;
+  z-index: 1;
 }
 
 .-text-success {
