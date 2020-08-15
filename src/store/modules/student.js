@@ -21,33 +21,62 @@ export const mutations = {
 }
 
 export const actions = {
-    fetch({ commit }, studentId) {
+    fetch({ commit, dispatch }, studentId) {
         return service.fetchStudent(studentId)
             .then(({ data }) => {
                 commit('SET_STUDENT', data.student)
             })
-            .catch(error => {
-                console.log(error)
+            .catch(() => {
+                const notification = {
+                    type: 'error',
+                    message: 'There was a problem fetching the student details.'
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
     },
 
-    addEvaluation({ commit }, { newEvaluation, studentId }) {
+    addEvaluation({ commit, dispatch }, { newEvaluation, studentId }) {
         return service.addEvaluation(newEvaluation, studentId)
             .then(({ data }) => {
                 commit('ADD_EVALUATION', data)
+
+                const notification = {
+                    type: 'success',
+                    message: `New evaluation added successfully.`
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
-            .catch(error => {
-                console.log(error)
+            .catch(() => {
+                const notification = {
+                    type: 'error',
+                    message: 'There was a problem adding new evaluation. Please try again.'
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
     },
 
-    deleteEvaluation({ commit }, evaluation) {
+    deleteEvaluation({ commit, dispatch }, evaluation) {
         return service.deleteEvaluation(evaluation.id)
             .then(({ data }) => {
                 commit('DELETE_EVALUATION', data.id)
+
+                const notification = {
+                    type: 'success',
+                    message: `Evaluation deleted successfully.`
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
-            .catch(error => {
-                console.log(error)
+            .catch(() => {
+                const notification = {
+                    type: 'error',
+                    message: `There was a problem deleting the evaluation. Please try again.`
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
     }
 }
