@@ -6,8 +6,6 @@ export const state = {
     notifications: []
 }
 
-// const nextId = 0
-
 export const mutations = {
     ADD(state, notification) {
         state.notifications.push({

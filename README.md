@@ -17,6 +17,7 @@ The student Evaluation tool is a Full stack web application which is an optimal 
 ## Features
 - Secured web application using JSONWebToken. Users can register and login to use the application.
 - Form validation using Vuelidate.
+- SUCCESS and ERROR notifications are displayed when required.
 - The project contains home page and three main views -> ClassListView, StudentsList view, and a StudentDetails view. All three views are secured and can be used only if the user is registered.
 - ClassList view
   - Registered users can see the list of classes, create new classes, and delete them.
@@ -33,7 +34,6 @@ The student Evaluation tool is a Full stack web application which is an optimal 
 
 ##Improvements
 - Currently, the application is not responsive. It can be done responsive.
-- There are no SUCCESS or ERROR notifications. This can be built.
 
 ## Steps to run the project
 
