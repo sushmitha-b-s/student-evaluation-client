@@ -31,7 +31,7 @@ export default {
   mounted() {
     setTimeout(() => {
       this.$store.dispatch("notifications/remove", this.notification);
-    }, 4000);
+    }, 5000);
   },
 
   beforeDestroy() {
@@ -56,7 +56,7 @@ export default {
 }
 
 .-text-success {
-  background-color: #0070f3;
+  background-color: #1976d2;
 }
 
 .-text-error {

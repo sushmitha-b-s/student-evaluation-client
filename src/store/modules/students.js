@@ -62,7 +62,7 @@ export const actions = {
 
                 const notification = {
                     type: 'success',
-                    message: `Student ${newStudent.name} created successfully.`
+                    message: `Student '${newStudent.name}' created successfully.`
                 }
 
                 dispatch('notifications/add', notification, { root: true })
@@ -84,7 +84,7 @@ export const actions = {
 
                 const notification = {
                     type: 'success',
-                    message: `Student ${student.name} deleted successfully.`
+                    message: `Student '${student.name}' deleted successfully.`
                 }
 
                 dispatch('notifications/add', notification, { root: true })
@@ -92,7 +92,7 @@ export const actions = {
             .catch(() => {
                 const notification = {
                     type: 'error',
-                    message: `There was a problem deleting the student ${student.name}. Please try again.`
+                    message: `There was a problem deleting the student '${student.name}'. Please try again.`
                 }
 
                 dispatch('notifications/add', notification, { root: true })
@@ -106,7 +106,7 @@ export const actions = {
 
                 const notification = {
                     type: 'success',
-                    message: `Student ${student.name} updated successfully.`
+                    message: `Student '${student.name}' updated successfully.`
                 }
 
                 dispatch('notifications/add', notification, { root: true })
@@ -114,7 +114,7 @@ export const actions = {
             .catch(() => {
                 const notification = {
                     type: 'error',
-                    message: `There was a problem updating a student ${student.name}. Please try again.`
+                    message: `There was a problem updating a student '${student.name}'. Please try again.`
                 }
 
                 dispatch('notifications/add', notification, { root: true })
