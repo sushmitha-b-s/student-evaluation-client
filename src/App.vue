@@ -1,6 +1,7 @@
 <template>
   <v-app>
     <NavBar />
+    <NotificationContainer />
     <v-main class="grey lighten-4">
       <router-view></router-view>
     </v-main>
@@ -9,10 +10,13 @@
 
 <script>
 import NavBar from "@/components/NavBar.vue";
+import NotificationContainer from "./components/NotificationContainer";
+
 export default {
   name: "App",
   components: {
-    NavBar
+    NavBar,
+    NotificationContainer
   }
 };
 </script>

@@ -19,13 +19,18 @@ export const mutations = {
 }
 
 export const actions = {
-    fetch({ commit }) {
+    fetch({ commit, dispatch }) {
         return service.fetchClasses()
             .then(({ data }) => {
                 commit('SET_CLASSES', data.classes)
             })
-            .catch(error => {
-                console.log(error)
+            .catch(() => {
+                const notification = {
+                    type: 'error',
+                    message: 'There was a problem fetching class list.'
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
     },
     delete({ commit }, batch) {
