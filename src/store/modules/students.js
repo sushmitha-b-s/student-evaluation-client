@@ -40,43 +40,84 @@ export const mutations = {
 }
 
 export const actions = {
-    fetch({ commit }, classId) {
+    fetch({ commit, dispatch }, classId) {
         return service.fetchStudents(classId)
             .then(({ data }) => {
                 commit('SET_STUDENTS', data.students)
             })
-            .catch(error => {
-                console.log(error)
+            .catch(() => {
+                const notification = {
+                    type: 'error',
+                    message: 'There was a problem fetching students list.'
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
     },
 
-    add({ commit }, { newStudent, classId }) {
+    add({ commit, dispatch }, { newStudent, classId }) {
         return service.addStudent(newStudent, classId)
             .then(({ data }) => {
                 commit('ADD_STUDENT', data)
+
+                const notification = {
+                    type: 'success',
+                    message: `Student ${newStudent.name} created successfully.`
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
-            .catch(error => {
-                console.log(error)
+            .catch(() => {
+                const notification = {
+                    type: 'error',
+                    message: 'There was a problem creating new student. Please try again.'
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
     },
 
-    delete({ commit }, student) {
+    delete({ commit, dispatch }, student) {
         return service.deleteStudent(student.id)
             .then(({ data }) => {
                 commit('DELETE_STUDENT', data.id)
+
+                const notification = {
+                    type: 'success',
+                    message: `Student ${student.name} deleted successfully.`
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
-            .catch(error => {
-                console.log(error)
+            .catch(() => {
+                const notification = {
+                    type: 'error',
+                    message: `There was a problem deleting the student ${student.name}. Please try again.`
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
     },
 
-    edit({ commit }, student) {
+    edit({ commit, dispatch }, student) {
         return service.editStudent(student)
             .then(({ data }) => {
                 commit('UPDATE_STUDENT', data)
+
+                const notification = {
+                    type: 'success',
+                    message: `Student ${student.name} updated successfully.`
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
-            .catch(error => {
-                console.log(error)
+            .catch(() => {
+                const notification = {
+                    type: 'error',
+                    message: `There was a problem updating a student ${student.name}. Please try again.`
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
     },
 

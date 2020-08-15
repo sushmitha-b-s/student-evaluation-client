@@ -22,7 +22,7 @@
         </v-btn>
 
         <div class="mt-5" v-if="hasStudents">
-          <AskQuestionContainer :classId="classId" :progressbar="progressbar" />
+          <AskQuestionContainer :classId="parseInt(classId)" :progressbar="progressbar" />
         </div>
       </div>
     </div>
