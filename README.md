@@ -32,7 +32,7 @@ The student Evaluation tool is a Full stack web application which is an optimal 
   - Evaluations can be sorted by date (in ascending or descending order).
   - Registered users can delete the evaluation.
 
-##Improvements
+## Improvements
 - Currently, the application is not responsive. It can be done responsive.
 
 ## Steps to run the project
