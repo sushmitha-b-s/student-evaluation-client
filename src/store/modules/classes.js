@@ -19,26 +19,61 @@ export const mutations = {
 }
 
 export const actions = {
-    fetch({ commit }) {
+    fetch({ commit, dispatch }) {
         return service.fetchClasses()
             .then(({ data }) => {
                 commit('SET_CLASSES', data.classes)
             })
-            .catch(error => {
-                console.log(error)
+            .catch(() => {
+                const notification = {
+                    type: 'error',
+                    message: 'There was a problem fetching class list.'
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
     },
-    delete({ commit }, batch) {
+    delete({ commit, dispatch }, batch) {
         return service.deleteClass(batch.id)
             .then(({ data }) => {
                 commit('DELETE_CLASS', data.id)
+
+                const notification = {
+                    type: 'success',
+                    message: `Batch #${batch.batchNo} deleted successfully.`
+                }
+
+                dispatch('notifications/add', notification, { root: true })
+            })
+            .catch(() => {
+                const notification = {
+                    type: 'error',
+                    message: `There was a problem deleting the batch #${batch.batchNo}. Please try again.`
+                }
+
+                dispatch('notifications/add', notification, { root: true })
             })
     },
 
-    add({ commit }, newBatch) {
+    add({ commit, dispatch }, newBatch) {
         return service.addClass(newBatch).then(({ data }) => {
             commit('ADD_CLASS', data)
+
+            const notification = {
+                type: 'success',
+                message: `Batch #${data.batchNo} created successfully.`
+            }
+
+            dispatch('notifications/add', notification, { root: true })
         })
+            .catch(() => {
+                const notification = {
+                    type: 'error',
+                    message: 'There was a problem creating new batch. Please try again.'
+                }
+
+                dispatch('notifications/add', notification, { root: true })
+            })
     }
 }
 
