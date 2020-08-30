@@ -1,6 +1,10 @@
 <template>
   <v-container>
-    <v-layout justify-center align-center>
+    <div class="text-center mt-16" v-if="loading">
+      <img src="@/assets/loading.svg" alt="Loading...." />
+      <p>Please wait while loading...</p>
+    </div>
+    <v-layout justify-center align-center v-else>
       <v-flex>
         <v-card class="mx-auto mt-10 pa-10" max-width="450">
           <h3 class="text-center mb-5">Login for the student evaluation app</h3>
@@ -70,7 +74,8 @@ export default {
       email: "",
       password: "",
       showPassword: false,
-      error: ""
+      error: "",
+      loading: false
     };
   },
 
@@ -92,9 +97,11 @@ export default {
         password: this.password
       };
 
+      this.loading = true;
       this.$store
         .dispatch("auth/login", loginDetails)
         .then(() => {
+          this.loading = false;
           this.$router.push({ name: "classes" });
         })
         .catch(({ response }) => {
