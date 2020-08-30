@@ -1,7 +1,16 @@
 # Student Evaluation Tool
 
 ## Deployed version
+
 - [Check out the deployed version here](https://student-evaluation-tool.netlify.app)
+
+## Table of contents:
+
+- **[About the project](#about-the-project)**
+- **[Technologies used](#technologies-used)**
+- **[Features](#features)**
+- **[Demo](#demo)**
+- **[Steps to run the project](#steps-to-run-the-project)**
 
 ## About the project
 
@@ -15,6 +24,7 @@ The student Evaluation tool is a Full stack web application which is an optimal 
   - Node.js, Express.js, Sequelize(ORM library), RestAPI's, JWT (for authentication).
 
 ## Features
+
 - Secured web application using JSONWebToken. Users can register and login to use the application.
 - Form validation using Vuelidate.
 - SUCCESS and ERROR notifications are displayed when required.
@@ -22,10 +32,10 @@ The student Evaluation tool is a Full stack web application which is an optimal 
 - ClassList view
   - Registered users can see the list of classes, create new classes, and delete them.
 - StudentsList view
-  - Registered users can see the list of students (with their name, profile picture and the latest  colorcode given to them).
+  - Registered users can see the list of students (with their name, profile picture and the latest colorcode given to them).
   - Registered users can create new student (which accepts name, profile picture link, address, email, mobile no., zipcode, city, country), edit their details and delete them.
-  - This view has the progress bar which represents the percentage of students evaluated by RED,  YELLOW or GREEN in that current class.
-  - This view has 'ASk A QUESTION' button, which is really helpful for teachers to pick any student  in the class and to ask them a question. This picks the student randomly based on their latest  performance (RED, YELLOW or GREEN). Not entirely random though. Students with RED have a 50%  chance, YELLOW with a 33% chance and, GREEN with a 17% chance (secret algorithm is used 🤓).
+  - This view has the progress bar which represents the percentage of students evaluated by RED, YELLOW or GREEN in that current class.
+  - This view has 'ASk A QUESTION' button, which is really helpful for teachers to pick any student in the class and to ask them a question. This picks the student randomly based on their latest performance (RED, YELLOW or GREEN). Not entirely random though. Students with RED have a 50% chance, YELLOW with a 33% chance and, GREEN with a 17% chance (secret algorithm is used 🤓).
 - StudentDetailsView
   - This page conatins all the details of a single student. All the evaluations given to the student are displayed.
   - Registered users can add new evaluation (which accepts date, colorcode and remarks).
@@ -33,20 +43,33 @@ The student Evaluation tool is a Full stack web application which is an optimal 
   - Registered users can delete the evaluation.
 
 ## Improvements
+
 - Currently, the application is not responsive. It can be done responsive.
+
+## Demo
+
+- Full Demo
+  ![Full demo](src/assets/full-demo.gif)
+- Classes view
+  ![Classes view](src/assets/classes_view.gif)
+- Students with Evaluations view
+  - part 1
+    ![Students with Evaluations view](src/assets/students_with_evaluations_view_part1.gif)
+  - part 2
+    ![Students with Evaluations view](src/assets/students_with_evaluations_view_part2.gif)
 
 ## Steps to run the project
 
 1. Clone the repository.
-    ```
-    $ git clone git@github.com:sushmitha-b-s/student-evaluation-client.git
-    $ cd student-evaluation-client
-    ```
+   ```
+   $ git clone git@github.com:sushmitha-b-s/student-evaluation-client.git
+   $ cd student-evaluation-client
+   ```
 2. Install node dependencies.
-    ```
-    $ npm install
-    ```
+   ```
+   $ npm install
+   ```
 3. Run the below command.
-    ```
-    $ npm run serve
-    ``` 
+   ```
+   $ npm run serve
+   ```
