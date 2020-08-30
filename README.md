@@ -49,14 +49,14 @@ The student Evaluation tool is a Full stack web application which is an optimal 
 ## Demo
 
 - Full Demo
-  ![Full demo](src/assets/demo/full-demo.gif)
+  - ![Full demo](src/assets/demo/full-demo.gif)
 - Classes view
-  ![Classes view](src/assets/demo/classes_view.gif)
+  - ![Classes view](src/assets/demo/classes_view.gif)
 - Students with Evaluations view
   - part 1
-    ![Students with Evaluations view](src/assets/demo/students_with_evaluations_view-part1.gif)
+    - ![Students with Evaluations view](src/assets/demo/students_with_evaluations_view-part1.gif)
   - part 2
-    ![Students with Evaluations view](src/assets/demo/students_with_evaluations_view-part2.gif)
+    - ![Students with Evaluations view](src/assets/demo/students_with_evaluations_view-part2.gif)
 
 ## Steps to run the project
 
